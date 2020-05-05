@@ -5,7 +5,7 @@
     <div class="container">
         <h1 class="mt-5">Ajouter un logement</h1>
 
-        <form action="addTraitement.php" method="post">
+        <form action="addTraitement.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="titre">Titre</label>
                 <input type="text" class="form-control" name="titre" id="titre"
@@ -29,18 +29,18 @@
             </div>
             <div class="form-group">
                 <label for="surface">Surface (en m²)</label>
-                <input type="number" name="surface" id="surface" class="form-control" placeholder="12" min="0">
+                <input type="number" name="surface" id="surface" class="form-control" placeholder="12" min="0" required>
                 <small class="text-muted">La surface est exprimée en m² et elle est arrondie au chiffre
                     supérieur</small>
             </div>
             <div class="form-group">
                 <label for="prix">Prix (en €)</label>
-                <input type="number" name="prix" id="prix" class="form-control" placeholder="2300" min="0">
+                <input type="number" name="prix" id="prix" class="form-control" placeholder="2300" min="0" required>
                 <small class="text-muted">Le prix est exprimé en euros</small>
             </div>
             <div class="form-group">
                 <label for="type_logement">Type de logement</label>
-                <select multiple class="form-control" name="type_logement" id="type_logement">
+                <select multiple class="form-control" name="type_logement" id="type_logement" required>
                     <option value="location">Location</option>
                     <option value="vente">Vente</option>
                 </select>
@@ -50,9 +50,8 @@
                 <textarea name="description" class="form-control" id="description" rows="3" placeholder="Description du produit"></textarea>
             </div>
             <div class="form-group">
-                <label for="image">Photo du logement</label>
-                <input type="file" id="image" name="image">
-                <small class="text-muted">Une seule photo, de type jpg ou png</small>
+                <label for="photo">Photo du logement</label>
+                <input type="file" id="photo" name="photo">
             </div>
             <input class="btn btn-info" type="submit" value="Ajouter">
         </form>

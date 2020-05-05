@@ -1,3 +1,20 @@
+<?php
+
+include 'config/bdd.php';
+$request = "SELECT * FROM logement";
+$response = $bdd->query($request);
+$logements = $response->fetchAll(PDO::FETCH_ASSOC);
+
+function miniAffichage($texte) {
+    if (strlen($texte) >= 50) {
+        $texte  = trim(substr($texte, 0, 50));
+        $texte .= '...';
+    }
+    return $texte;
+}
+
+?>
+
 <?php include 'partials/header.php' ; ?>
 <?php include 'partials/navbar.php' ; ?>
 
@@ -10,30 +27,32 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Titre</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Code Postal</th>
+                    <th scope="col">Ville</th>
+                    <th scope="col">Surface</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Photo</th>
                 </tr>
             </thead>
             <tbody>
+                <?php foreach($logements as $logement) : ?>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <th scope="row"><?= $logement['id_logement'] ?></th>
+                    <td><?= $logement['titre'] ?></td>
+                    <td><?= miniAffichage($logement['adresse']) ?></td>
+                    <td><?= $logement['cp'] ?></td>
+                    <td><?= $logement['ville'] ?></td>
+                    <td><?= $logement['surface'] ?></td>
+                    <td><?= $logement['prix'] ?></td>
+                    <td><?= $logement['type_logement'] ?></td>
+                    <td><?= miniAffichage($logement['description']) ?></td>                    
+                    <td><img src="upload/<?= $logement['photo'] ?>" alt="" width="50" height="50"></td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
 
