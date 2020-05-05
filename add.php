@@ -19,8 +19,7 @@
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="cp">Code Postal</label>
-                    <input type="text" class="form-control" name="cp" id="cp" size="5" maxlength="5" placeholder="69001"
-                        required>
+                    <input  type="text" class="form-control" name="cp" id="cp" placeholder="69001" pattern="[0-9]{5}" required>
                 </div>
                 <div class="form-group col-md-9">
                     <label for="ville">Ville</label>
@@ -29,13 +28,13 @@
             </div>
             <div class="form-group">
                 <label for="surface">Surface (en m²)</label>
-                <input type="number" name="surface" id="surface" class="form-control" placeholder="12" min="0" required>
+                <input type="number" name="surface" id="surface" class="form-control" placeholder="12" min="0" step="1" required>
                 <small class="text-muted">La surface est exprimée en m² et elle est arrondie au chiffre
                     supérieur</small>
             </div>
             <div class="form-group">
                 <label for="prix">Prix (en €)</label>
-                <input type="number" name="prix" id="prix" class="form-control" placeholder="2300" min="0" required>
+                <input type="number" name="prix" id="prix" class="form-control" placeholder="2300" min="0" step="1" required>
                 <small class="text-muted">Le prix est exprimé en euros</small>
             </div>
             <div class="form-group">

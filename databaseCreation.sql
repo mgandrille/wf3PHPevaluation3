@@ -9,7 +9,7 @@ CREATE TABLE logement (
     ville			VARCHAR(150),
     cp				INT(5) UNSIGNED,
     surface			INT UNSIGNED,
-    prix			DECIMAL,
+    prix			INT,
     photo			VARCHAR(50),
     type_logement	VARCHAR(20),
     description		MEDIUMTEXT,
