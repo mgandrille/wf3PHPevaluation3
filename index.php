@@ -5,6 +5,7 @@ $request = "SELECT * FROM logement";
 $response = $bdd->query($request);
 $logements = $response->fetchAll(PDO::FETCH_ASSOC);
 
+// Réduire la taille des texte à 50 caractères
 function miniAffichage($texte) {
     if (strlen($texte) >= 50) {
         $texte  = trim(substr($texte, 0, 50));
@@ -14,11 +15,12 @@ function miniAffichage($texte) {
 }
 
 ?>
+<!-- ***** Page d'accueil ***** -->
 
 <?php include 'partials/header.php' ; ?>
 <?php include 'partials/navbar.php' ; ?>
 
-<!-- Begin page content -->
+<!-- Affichage de tous les biens -->
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <h1 class="mt-5">Liste des logements disponibles</h1>
@@ -42,7 +44,7 @@ function miniAffichage($texte) {
                 <?php foreach($logements as $logement) : ?>
                 <tr>
                     <th scope="row"><?= $logement['id_logement'] ?></th>
-                    <td><?= $logement['titre'] ?></td>
+                    <td><a href="view.php?id=<?= $logement['id_logement'] ?>"><?= $logement['titre'] ?></a></td>
                     <td><?= miniAffichage($logement['adresse']) ?></td>
                     <td><?= $logement['cp'] ?></td>
                     <td><?= $logement['ville'] ?></td>
